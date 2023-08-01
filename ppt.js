@@ -26,20 +26,26 @@ function mostrar(player, str){
 function combate(npc, user){
     if(npc == user){
         alert('EMPATE')
+        return 0
     } else if(user == 1 && npc == 3){
         alert('GANASTE')
+        return 1
     } else if(user == 2 && npc == 1){
         alert('GANASTE')
+        return 1
     } else if(user == 3 && npc == 2){
         alert('GANASTE')
+        return 1
     } else {
         alert('PERDISTE')
+        return 0
     }
 }
 
 // Elección
 let pc = []
 let jugador = []
+let win = 0
 let rondas = parseInt(prompt('Cantidad de rondas a jugar'))
 
 for(let i = 0; i < rondas; i++){
@@ -54,5 +60,7 @@ for(let i = 0; i < rondas; i++){
     mostrar(pc[i], 'PC')
     
     // Combate
-    combate(pc[i], jugador[i])
+    win += combate(pc[i], jugador[i])
 }
+
+alert(`Ganaste ${win} veces.`)
