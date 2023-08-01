@@ -1,5 +1,9 @@
-function aleatorio(min, max){
-    return Math.floor(Math.random() * (max - min + 1) + min)
+function aleatorio(min, max, rounds){
+    let npc = []
+    for(let i = 0; i < rounds; i++){
+        npc[i] = Math.floor(Math.random() * (max - min + 1) + min)
+    }
+    return npc
 }
 
 function mostrar(player, str){
@@ -34,12 +38,21 @@ function combate(npc, user){
 }
 
 // Elección
-let pc = aleatorio(1, 3)
-let jugador = parseInt(prompt('Elige 1 para Piedra; 2 para Papel; 3 para Tijeras !'))
+let pc = []
+let jugador = []
+let rondas = parseInt(prompt('Cantidad de rondas a jugar'))
 
-// Alerta de opción elegida por el usuario y la pc
-mostrar(jugador, 'USUARIO')
-mostrar(pc, 'PC')
+for(let i = 0; i < rondas; i++){
+    jugador[i] = parseInt(prompt('Elegí 1 para Piedra; 2 para Papel; 3 para Tijeras'))
+}
 
-// Combate
-combate(pc, jugador)
+pc = aleatorio(1, 3, rondas)
+
+for(let i = 0; i < rondas; i++){
+    // Alerta de opción elegida por el usuario y la pc
+    mostrar(jugador[i], 'USUARIO')
+    mostrar(pc[i], 'PC')
+    
+    // Combate
+    combate(pc[i], jugador[i])
+}
