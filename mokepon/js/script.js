@@ -1,6 +1,9 @@
 window.addEventListener('load', () => {
     let botonMascotaJugador = document.getElementById('boton-mascota')
-    let spanAtaqueJugador = document.getElementById('ataque-jugador')
+
+    let btnFuego = document.getElementById('boton-fuego')
+    let btnAgua = document.getElementById('boton-agua')
+    let btnTierra = document.getElementById('boton-tierra')
 
     botonMascotaJugador.addEventListener('click', () => {
 
@@ -29,19 +32,48 @@ window.addEventListener('load', () => {
         seleccionarMascotaEnemigo()
     })
 
-    let btnFuego = document.getElementById('boton-fuego')
+
     btnFuego.addEventListener('click', () => {
-        spanAtaqueJugador.innerText = 'FUEGO'
+        ataqueJugador = 'FUEGO'
+        ataqueEnemigo = ataqueAleatorioEnemigo()
+        crearMensaje()
     })
-    let btnAgua = document.getElementById('boton-agua')
     btnAgua.addEventListener('click', () => {
-        spanAtaqueJugador.innerText = 'AGUA'
+        ataqueJugador = 'AGUA'
+        ataqueEnemigo = ataqueAleatorioEnemigo()
+        crearMensaje()
     })
-    let btnTierra = document.getElementById('boton-tierra')
     btnTierra.addEventListener('click', () => {
-        spanAtaqueJugador.innerText = 'TIERRA'
+        ataqueJugador = 'TIERRA'
+        ataqueEnemigo = ataqueAleatorioEnemigo()
+        crearMensaje()
     })
+
+
 })
+
+
+let ataqueJugador
+let ataqueEnemigo
+let mensajes = document.getElementById('mensajes')
+
+function crearMensaje() {
+    let parrafo = document.createElement('p')
+    parrafo.innerHTML = `Tu mascota atacó con ${ataqueJugador}; La mascota del enemigo atacó con ${ataqueEnemigo} - PENDIENTE 🎉`
+    mensajes.appendChild(parrafo)
+}
+
+function ataqueAleatorioEnemigo() {
+    let ataqueAleatorio = aleatorio(1, 3)
+    switch (ataqueAleatorio) {
+        case 1:
+            return 'FUEGO'
+        case 2:
+            return 'AGUA'
+        case 3:
+            return 'TIERRA'
+    }
+}
 
 function seleccionarMascotaEnemigo() {
     let random = aleatorio(1, 6)
