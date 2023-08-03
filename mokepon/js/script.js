@@ -5,6 +5,8 @@ window.addEventListener('load', () => {
     let btnAgua = document.getElementById('boton-agua')
     let btnPlanta = document.getElementById('boton-planta')
 
+    let btnReiniciar = document.getElementById('reiniciar')
+
     botonMascotaJugador.addEventListener('click', () => {
 
         miMascota = document.getElementById('mi-mascota')
@@ -36,21 +38,23 @@ window.addEventListener('load', () => {
     btnFuego.addEventListener('click', () => {
         ataqueJugador = 'FUEGO'
         ataqueEnemigo = ataqueAleatorioEnemigo()
-        resultadoFinal = combate(ataqueJugador, ataqueEnemigo)
-        crearMensaje()
+        combate(ataqueJugador, ataqueEnemigo)
+
     })
     btnAgua.addEventListener('click', () => {
         ataqueJugador = 'AGUA'
         ataqueEnemigo = ataqueAleatorioEnemigo()
-        resultadoFinal = combate(ataqueJugador, ataqueEnemigo)
-        crearMensaje()
+        combate(ataqueJugador, ataqueEnemigo)
+
     })
     btnPlanta.addEventListener('click', () => {
         ataqueJugador = 'PLANTA'
         ataqueEnemigo = ataqueAleatorioEnemigo()
-        resultadoFinal = combate(ataqueJugador, ataqueEnemigo)
-        crearMensaje()
+        combate(ataqueJugador, ataqueEnemigo)
+
     })
+
+    btnReiniciar.addEventListener('click', () => location.reload())
 
 
 })
@@ -58,32 +62,48 @@ window.addEventListener('load', () => {
 
 let ataqueJugador
 let ataqueEnemigo
-let resultadoFinal
 let hpJugador = 5
 let hpEnemigo = 5
 let mensajes = document.getElementById('mensajes')
 
-function crearMensaje() {
+function crearMensaje(resultado) {
     let parrafo = document.createElement('p')
-    parrafo.innerHTML = `Tu mascota atacó con ${ataqueJugador}; La mascota del enemigo atacó con ${ataqueEnemigo} - ${resultadoFinal}`
+    parrafo.innerHTML = `Tu mascota atacó con ${ataqueJugador}; La mascota del enemigo atacó con ${ataqueEnemigo} - ${resultado}`
     mensajes.appendChild(parrafo)
 }
 
-function combate(jugador, npc){
+function crearMensajeFinal(mensajeFinal) {
+    let parrafo = document.createElement('p')
+    parrafo.innerHTML = mensajeFinal
+    mensajes.appendChild(parrafo)
+    document.getElementById('boton-fuego').disabled = true
+    document.getElementById('boton-agua').disabled = true
+    document.getElementById('boton-planta').disabled = true
+}
+
+function combate(jugador, npc) {
     let spanHpJugador = document.getElementById('hp-jugador')
     let spanHpEnemigo = document.getElementById('hp-enemigo')
 
-    if(jugador == npc){
-        return 'EMPATE 😑'
-    } else if((jugador == 'PLANTA' && npc == 'AGUA') || (jugador == 'AGUA' && npc == 'FUEGO') || (jugador == 'FUEGO' && npc == 'PLANTA')){
+    if (jugador == npc) {
+        crearMensaje('EMPATE')
+    } else if ((jugador == 'PLANTA' && npc == 'AGUA') || (jugador == 'AGUA' && npc == 'FUEGO') || (jugador == 'FUEGO' && npc == 'PLANTA')) {
         hpEnemigo--
         spanHpEnemigo.innerText = hpEnemigo
-        return 'GANASTE 🥇 -> El enemigo pierde una vida'
+        crearMensaje('LA MASCOTA DEL ENEMIGO PIERDE UNA VIDA')
     } else {
         hpJugador--
         spanHpJugador.innerText = hpJugador
-        return 'PERDISTE 😭 -> Pierdes una vida'
+        crearMensaje('TU MASCOTA PIERDE UNA VIDA')
     }
+
+    revisarVidas()
+
+}
+
+function revisarVidas() {
+    if (hpEnemigo == 0) crearMensajeFinal('LA MASCOTA DEL ENEMIGO MURIÓ')
+    else if (hpJugador == 0) crearMensajeFinal('TU MASCOTA MURIÓ')
 }
 
 function ataqueAleatorioEnemigo() {
