@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOKEPON!</title>
+    <link rel="stylesheet" href="/mokepon/css/style.css">
 </head>
+
 <body>
-    <h1>MOKEPON! 🔥💧🌱</h1>
+    <h1>🌱💧 🔥 MOKEPON 🔥💧🌱</h1>
 
-    <section id="seleccionar-mascota">
+    <section id="seleccionar-mascota" class="selector-mascota">
         <h2>Elige a tu mascota:</h2>
-
-        <label for="hipodoge">Hipodoge -> Agua</label>
-        <input type="radio" name="mascota" id="hipodoge">
-        <label for="capipepo">Capipepo -> Planta</label>
-        <input type="radio" name="mascota" id="capipepo">
-        <label for="ratigueya">Ratigueya -> Fuego</label>
-        <input type="radio" name="mascota" id="ratigueya">
-        <label for="langostelvis">Langostelvis -> Agua y Fuego</label>
-        <input type="radio" name="mascota" id="langostelvis">
-        <label for="tucapalma">Tucapalma -> Agua y Planta</label>
-        <input type="radio" name="mascota" id="tucapalma">
-        <label for="pydos">Pydos -> Planta y Fuego</label>
-        <input type="radio" name="mascota" id="pydos">
+        <div class="input-box">
+            <label for="hipodoge">Hipodoge -> Agua</label>
+            <input type="radio" name="mascota" id="hipodoge" class="input-check">
+        </div>
+        <div class="inpuch-check">
+            <label for="capipepo">Capipepo -> Planta</label>
+            <input type="radio" name="mascota" id="capipepo" class="input-check">
+        </div>
+        <div class="inpuch-check">
+            <label for="ratigueya">Ratigueya -> Fuego</label>
+            <input type="radio" name="mascota" id="ratigueya" class="input-check">
+        </div>
+        <div class="inpuch-check">
+            <label for="langostelvis">Langostelvis -> Agua y Fuego</label>
+            <input type="radio" name="mascota" id="langostelvis" class="input-check">
+        </div>
+        <div class="inpuch-check">
+            <label for="tucapalma">Tucapalma -> Agua y Planta</label>
+            <input type="radio" name="mascota" id="tucapalma" class="input-check">
+        </div>
+        <div class="inpuch-check">
+            <label for="pydos">Pydos -> Planta y Fuego</label>
+            <input type="radio" name="mascota" id="pydos" class="input-check">
+        </div>
 
         <button id="boton-mascota">Seleccionar</button>
     </section>
@@ -51,4 +65,5 @@
 
     <script src="/mokepon/js/script.js"></script>
 </body>
+
 </html>
