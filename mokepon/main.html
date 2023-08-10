@@ -11,9 +11,10 @@
 <body>
     <h1>🌱💧 🔥 MOKEPON 🔥💧🌱</h1>
 
+    <h2>Elige a tu mascota:</h2>
+
     <section id="seleccionar-mascota" class="selector-mascota">
-        <h2>Elige a tu mascota:</h2>
-        <div class="input-box">
+        <div class="inpuch-check">
             <label for="hipodoge">Hipodoge -> Agua</label>
             <input type="radio" name="mascota" id="hipodoge" class="input-check">
         </div>
@@ -40,15 +41,18 @@
 
         <button id="boton-mascota">Seleccionar</button>
     </section>
+    
+    <h2>Elige tu ataque:</h2>
 
     <section id="seleccionar-ataque">
-        <h2>Elige tu ataque:</h2>
-        <p>
-            Tu mascota: <span id="mi-mascota"></span> tiene <span id="hp-jugador">5</span> vidas
-        </p>
-        <p>
-            La mascota de tu enemigo: <span id="mascota-enemiga"></span> tiene <span id="hp-enemigo">5</span> vidas
-        </p>
+        <div class="display-vidas">
+            <p>
+                Tu mascota: <span id="mi-mascota"></span> tiene <span id="hp-jugador">5</span> vidas
+            </p>
+            <p>
+                La mascota de tu enemigo: <span id="mascota-enemiga"></span> tiene <span id="hp-enemigo">5</span> vidas
+            </p>
+        </div>
         <p>
             <button id="boton-fuego">Fuego 🔥</button>
             <button id="boton-agua">Agua 💧</button>

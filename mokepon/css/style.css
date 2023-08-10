@@ -15,6 +15,17 @@ h1{
 .selector-mascota{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    margin: auto;
+    width: 75%;
+    margin-bottom: 20px;
+}
+
+h2{
+    text-align: center;
+}
+
+.inpuch-check{
+    display: flex;
+    justify-content: space-between;
 }
